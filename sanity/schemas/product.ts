@@ -33,6 +33,11 @@ export default {
       title: 'Price',
     },
     {
+      name: 'instock',
+      type: 'boolean',
+      title: 'Instock',
+    },
+    {
       name: 'category',
       type: 'reference',
       title: 'Product Category',
@@ -40,5 +45,6 @@ export default {
         type: "category"
       }]
     },
+    
   ],
 }
