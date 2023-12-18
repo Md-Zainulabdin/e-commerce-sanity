@@ -8,5 +8,11 @@ export default {
             type: "string",
             title: "Name of Category"
         },
+        {
+            name: 'images',
+            type: 'image',
+            title: 'Category Images',
+            
+        }
     ]
 }

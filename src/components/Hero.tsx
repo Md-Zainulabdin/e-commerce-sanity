@@ -9,6 +9,9 @@ async function getData() {
 
 const Hero = async () => {
   const data = await getData();
+
+  // console.log(data);
+  
   return (
     <section className="w-full mx-auto sm:pb-6">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
