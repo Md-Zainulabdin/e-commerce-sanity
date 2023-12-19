@@ -7,7 +7,7 @@ import { ShoppingBag } from "lucide-react";
 
 const links = [
   { name: "Home", href: "/" },
-  { name: "Shop", href: "/shop" },
+  { name: "Shop", href: "/products" },
 ];
 
 const Navbar = () => {
