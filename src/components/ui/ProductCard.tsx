@@ -1,15 +1,8 @@
+import { IProduct } from "@/types/product.interface";
 import Image from "next/image";
 import Link from "next/link";
 
-interface ICollections {
-  name: string;
-  description: string;
-  slug: string;
-  price: string;
-  imageUrl: string;
-}
-
-const ProductCard = ({ data }: { data: ICollections[] }) => {
+const ProductCard = ({ data }: { data: IProduct[] }) => {
   return (
     <>
       {data.map((item, idx) => (

@@ -7,7 +7,7 @@ async function getData() {
     name,
       "imageUrl": images.asset->url
   }`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { caches: "no-store" });
   return data;
 }
 
@@ -41,7 +41,7 @@ const Category = async () => {
 
               <div className="category-title w-full absolute md:bottom-6 px-[20px]">
                 <div className="w-full h-[45px] md:h-[60px] flex items-center justify-center bg-white hover:border transition-all duration-300 ease-in-out rounded-md">
-                  <Link href={"/shop"} className="text-primary text-lg ">
+                  <Link href={"/products"} className="text-primary text-lg ">
                     {item.name}
                   </Link>
                 </div>
