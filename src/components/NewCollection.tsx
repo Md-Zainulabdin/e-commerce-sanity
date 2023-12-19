@@ -13,7 +13,7 @@ async function getData() {
       "imageUrl": images[0].asset->url,
       "slug": slug.current
   }`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { caches: "no-store" });
   return data;
 }
 

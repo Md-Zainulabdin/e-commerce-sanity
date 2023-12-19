@@ -27,7 +27,7 @@ const ProductCard = ({ data }: { data: ICollections[] }) => {
               </div>
 
               <div className="product-desc pt-4 space-y-1">
-                <h1 className="text-lg md:text-xl text-[#222] font-semibold">
+                <h1 className="truncate ... text-lg md:text-xl text-[#222] font-semibold">
                   {item.name}
                 </h1>
                 <p className="truncate ... text-muted-foreground text-lg">

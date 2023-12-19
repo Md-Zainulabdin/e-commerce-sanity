@@ -3,7 +3,7 @@ import Image from "next/image";
 
 async function getData() {
   const query = `*[_type == "heroImage"][0]`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { caches: "no-store" });
   return data;
 }
 
@@ -11,7 +11,7 @@ const Hero = async () => {
   const data = await getData();
 
   // console.log(data);
-  
+
   return (
     <section className="w-full mx-auto sm:pb-6">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
@@ -26,7 +26,7 @@ const Hero = async () => {
           </p>
         </div>
 
-        <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
+        {/* <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
           <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
             <Image
               src={urlFor(data.image1).url()}
@@ -48,7 +48,7 @@ const Hero = async () => {
               priority
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
