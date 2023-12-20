@@ -1,4 +1,6 @@
+import AddToCart from "@/components/AddToCart";
 import ImageGallery from "@/components/imageGallery";
+import ProductCard from "@/components/ui/ProductCard";
 import { Button } from "@/components/ui/button";
 import { client, urlFor } from "@/lib/sanity";
 import { fullProduct } from "@/types/product.interface";
@@ -19,6 +21,17 @@ async function getData(slug: string) {
   return data;
 }
 
+async function getRelatedProducts(category: string) {
+  const query = `*[_type == "product" && category->name == "${category}"]{
+    name,
+      description,price,
+      "imageUrl": images[0].asset->url,
+      "slug": slug.current,
+  }`;
+  const data = await client.fetch(query);
+  return data;
+}
+
 export const dynamic = "force-dynamic";
 
 const SingleProductPage = async ({
@@ -27,6 +40,7 @@ const SingleProductPage = async ({
   params: { productSlug: string };
 }) => {
   const data: fullProduct = await getData(params.productSlug);
+  const relatedProduct = await getRelatedProducts(data.categoryName);
 
   return (
     <div className="bg-white">
@@ -61,11 +75,25 @@ const SingleProductPage = async ({
             </div>
 
             <div className="w-full mt-4">
-              <Button className="w-full" size={"lg"}>
-                Add to Cart
-              </Button>
+              <AddToCart
+                currency="USD"
+                description={data.description}
+                image={data.images[0]}
+                name={data.name}
+                price={Number(data.price)}
+              />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <div className="title p-3">
+          <h1 className="text-3xl font-bold">Related Products</h1>
+        </div>
+
+        <div className=" flex flex-wrap items-center justify-center sm:justify-start gap-8 gap-y-12 md:gap-y-20 pb-12">
+          <ProductCard data={relatedProduct} />
         </div>
       </div>
     </div>
