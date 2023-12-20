@@ -8,9 +8,11 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "use-shopping-cart";
+import Image from "next/image";
 
 const ShoppingCartModal = () => {
-  const { cartCount, shouldDisplayCart, handleCartClick } = useShoppingCart();
+  const { cartCount, shouldDisplayCart, handleCartClick, cartDetails } =
+    useShoppingCart();
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw]">
@@ -23,7 +25,21 @@ const ShoppingCartModal = () => {
               {cartCount === 0 ? (
                 <h1 className="py-6">You dont have any items</h1>
               ) : (
-                <h1>Hey, you have some items</h1>
+                <>
+                  {Object.values(cartDetails ?? {}).map((entry) => (
+                    <li
+                      key={entry.id}
+                      className="flex py-6 overflow-hidden rounded-md border border-gray-200"
+                    >
+                      <Image
+                        src={entry.image as string}
+                        alt="Product Image"
+                        width={100}
+                        height={100}
+                      />
+                    </li>
+                  ))}
+                </>
               )}
             </ul>
           </div>

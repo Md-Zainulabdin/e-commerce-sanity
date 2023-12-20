@@ -10,7 +10,6 @@ export interface ProductCart {
   price: number;
   currency: string;
   image: any;
-  id: string;
 }
 
 const AddToCart = ({
@@ -27,7 +26,7 @@ const AddToCart = ({
     description: description,
     price: price,
     currency: currency,
-    image: urlFor(image).url,
+    image: urlFor(image).url(),
     id: "dfhdf",
   };
   return (
