@@ -14,4 +14,5 @@ export interface fullProduct {
   price: string;
   images: any;
   categoryName: string;
+  instock: boolean;
 }
