@@ -25,8 +25,8 @@ const ImageGallery = ({ images }: IImageProps) => {
             <Image
               src={urlFor(image).url()}
               alt="Product Image"
-              width={200}
-              height={200}
+              width={80}
+              height={80}
               onClick={() => handleSmallImageClick(image)}
               className="object-cover object-center cursor-pointer"
             />
