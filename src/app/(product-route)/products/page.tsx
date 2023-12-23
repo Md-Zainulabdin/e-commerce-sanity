@@ -29,12 +29,12 @@ const ShopPage = async ({
 
   const entries = data.slice(start, end);
 
-  console.log(entries.length);
+  // console.log(entries.length);
 
   return (
     <div>
       <div className="category"></div>
-      <div className="products flex flex-wrap gap-12">
+      <div className="products flex flex-wrap justify-center gap-12">
         {entries.length === 0 ? (
           <div className="w-full h-72 flex items-center justify-center border border-dashed rounded-lg border-gray-200">
             <h1 className="text-xl">Nothing to show</h1>

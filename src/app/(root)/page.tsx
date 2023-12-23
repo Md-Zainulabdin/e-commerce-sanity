@@ -1,6 +1,7 @@
 import Category from "@/components/Category";
 import Hero from "@/components/Hero";
 import NewCollection from "@/components/NewCollection";
+import Services from "@/components/Services";
 
 export default function Home() {
   return (
@@ -15,6 +16,10 @@ export default function Home() {
 
       <div className="mt-12">
         <NewCollection />
+      </div>
+
+      <div>
+        <Services />
       </div>
     </div>
   );

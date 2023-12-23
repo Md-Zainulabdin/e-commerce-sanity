@@ -3,8 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { ShoppingBag } from "lucide-react";
+import { AlignJustify, ShoppingBag } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
+import { useState } from "react";
 
 const links = [
   { name: "Home", href: "/" },
@@ -13,6 +14,7 @@ const links = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [isShow, setIsShow] = useState(true);
   const { handleCartClick } = useShoppingCart();
 
   return (
@@ -24,7 +26,7 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="relative flex items-center gap-4 sm:gap-6">
           <nav className="hidden gap-10 lg:flex 2xl:ml-16">
             {links.map((link, idx) => (
               <div key={idx}>
@@ -43,6 +45,29 @@ const Navbar = () => {
               </div>
             ))}
           </nav>
+
+          <div
+            className="sm:hidden cursor-pointer"
+            onClick={() => setIsShow(!isShow)}
+          >
+            <AlignJustify className="text-gray-500" />
+          </div>
+
+          {isShow && (
+            <div className="sm:hidden absolute top-14 -left-4 z-50 w-[100px] bg-gray-100 rounded-lg py-2 px-2">
+              <nav className="flex flex-col gap-2">
+                {links.map((link, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setIsShow(!isShow)}
+                    className="hover:bg-white py-1 px-2 rounded-md"
+                  >
+                    <Link href={link.href}>{link.name}</Link>
+                  </div>
+                ))}
+              </nav>
+            </div>
+          )}
           <Button variant={"ghost"} onClick={() => handleCartClick()}>
             <ShoppingBag className="w-5 h-5 text-[#333]" />
           </Button>
