@@ -14,7 +14,7 @@ const links = [
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState(false);
   const { handleCartClick } = useShoppingCart();
 
   return (
